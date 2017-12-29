@@ -9,11 +9,11 @@
 
 		<ion-item style="width:80%;">
 			<ion-label floating>Enter your Secret Message here</ion-label>
-			<ion-input  type="text" [(ngModel)]="user.message" ></ion-input>
+			<ion-input  type="text" [(ngModel)]="user.message" (ngModelChnage)="onChangeData_message(user)"></ion-input>
 		</ion-item>
 		<ion-item style="width:80%;">
 			<ion-label floating>Name the secret File</ion-label>
-			<ion-input  type="text" [(ngModel)]="user.file_name" ></ion-input>
+			<ion-input  type="text" [(ngModel)]="user.file_name" (ngModelChnage)="onChangeData_filename(user)" ></ion-input>
 		</ion-item>
 		
 		<p style="width:80%;">
@@ -27,7 +27,7 @@
 	
 	<ion-item style="width:80%;">
 		<ion-label floating>To Email</ion-label>
-		<ion-input  type="text"  [(ngModel)]="user.toemail"></ion-input>
+		<ion-input  type="text"  [(ngModel)]="user.toemail" (ngModelChnage)="onChangeData_toemail(user)"></ion-input>
 	</ion-item>
 
 	<p style="width:80%">

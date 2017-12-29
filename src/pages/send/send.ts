@@ -16,11 +16,17 @@ export class SendPage {
   public imageLen:number;
   public imageLen_string:string;
   public file_dir:string;
+
+  public check_msg:string;
+  public check_filename:string;
+  public check_mail:string;
   
   user={} as User;
   
+
+  
   constructor(private emailComp:EmailComposer, public navCtrl: NavController,private cam:Camera,private alertCntrl:AlertController,private file:File) {
-this.base64Image='./assets/imgs/blank.jpg'
+this.base64Image='./assets/imgs/blank.jpg';
   }
 
   capture_image(user:User){
@@ -123,8 +129,12 @@ this.base64Image='./assets/imgs/blank.jpg'
   }
 
   sendData(user:User){
-    if(user.message!=null  && user.toemail!=null && user.file_name!=null){
+    
+
+    if(user.file_name!=null && user.toemail!=null && user.message!=null && this.base64Image!='./assets/imgs/blank.jpg'){
+
     try{
+
       let email={
         to:user.toemail,
         subject:'Very Important Message',
@@ -133,6 +143,10 @@ this.base64Image='./assets/imgs/blank.jpg'
         isHtml:true
       };
       this.emailComp.open(email);
+      user.file_name=null;
+      user.toemail=null;
+      user.message=null;
+      this.base64Image='./assets/imgs/blank.jpg'
     }catch(e){
       let alert=this.alertCntrl.create({
         title:"Failed",
@@ -149,7 +163,34 @@ this.base64Image='./assets/imgs/blank.jpg'
      buttons:['Ok']
     });
     alert.present();
+
+if(user.message==null) {
+  this.onChangeData_message(user);
+}   
+ 
+
+if(user.file_name==null)   {
+  this.onChangeData_filename(user);
+}
+
+
+if(user.toemail==null){
+  this.onChangeData_toemail(user);
+}
+
   }
+}
+
+onChangeData_message(user:User){
+  user.message=null;
+}
+
+onChangeData_filename(user:User){
+user.file_name=null;
+}
+
+onChangeData_toemail(user:User){
+user.toemail=null;
 }
 
 }
