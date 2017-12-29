@@ -1,0 +1,36 @@
+<!--
+  Generated template for the RetrievePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Retrieve</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<p style="width:80%;">
+	<button ion-outline-button style="height:40px;width:60%;border-radius:20px;background-color:rgb(94, 255, 0)"  (click)="browseFile(user)"><b>Browse for code file  </b><ion-icon name="md-albums"></ion-icon></button>
+</p>	
+
+<p style="width:80%;">
+<textarea cols="40" rows="4" [(ngModel)]="user.code"></textarea>
+</p>
+<p style="width:80%;">
+		<button ion-outline-button style="height:40px;width:49%;border-radius:20px;background-color:rgb(255, 102, 0)"  (click)="covert_string_to_image(user)"><b>Process  </b><ion-icon name="md-barcode"></ion-icon></button>
+</p>		
+<p style="width:80%;">
+		<img [src]="base64Image" width="60%" style="background-color:cornsilk"/>
+</p>
+
+<p style="width:80%;">
+    <ion-label>Your Decrypted Message</ion-label>
+    <textarea cols="40" rows="6" [(ngModel)]="user.decoded_message"></textarea>
+</p>
+</ion-content>

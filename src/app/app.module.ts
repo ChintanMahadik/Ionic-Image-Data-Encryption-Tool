@@ -1,40 +1,47 @@
-import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-
-import { StatusBar } from '@ionic-native/status-bar';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import {AngularFireModule} from 'angularfire2';
+import { MyApp } from './app.component';
+import { SendPage } from '../pages/send/send';
+import {FIREBASE_CONFIG} from './app.firebase.config';
+import{Camera} from '@ionic-native/camera';
+import {EmailComposer} from '@ionic-native/email-composer'
+import { HomePage } from '../pages/home/home';
+import { RetrievePage } from '../pages/retrieve/retrieve';
+import {File} from '@ionic-native/file'
+import {FileChooser} from '@ionic-native/file-chooser'
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    SendPage,
     HomePage,
-    TabsPage
+    RetrievePage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+     AngularFireModule.initializeApp(FIREBASE_CONFIG)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    SendPage,
     HomePage,
-    TabsPage
+    RetrievePage
+   
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Camera,
+    EmailComposer,
+    File,
+    FileChooser
   ]
 })
 export class AppModule {}
