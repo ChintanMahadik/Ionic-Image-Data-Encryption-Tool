@@ -17,7 +17,9 @@ import { RetrievePage } from '../retrieve/retrieve';
 })
 export class HomePage {
 
+  public base64Image:string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.base64Image='./assets/imgs/main.png';
   }
 
   ionViewDidLoad() {

@@ -25,7 +25,7 @@ export class RetrievePage {
   private message:string;
 
   constructor(private file:File,private alertCntrl:AlertController, public navCtrl: NavController, public navParams: NavParams,private filechooser:FileChooser) {
-    this.base64Image='./assets/imgs/output.jpg';
+    this.base64Image='./assets/imgs/o.gif';
   }
 
   ionViewDidLoad() {
@@ -109,5 +109,16 @@ export class RetrievePage {
       });
       alert.present();
     })
+  }
+
+
+  download(user:User){
+    let alert=this.alertCntrl.create({
+      title:'Download Image ?',
+      subTitle:'select ok to download',
+     buttons:['Ok','Cancel']
+    });
+    alert.present();
+
   }
 }

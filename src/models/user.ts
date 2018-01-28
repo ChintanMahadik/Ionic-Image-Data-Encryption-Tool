@@ -5,4 +5,5 @@ export interface User{
     code:string;
     file_name:string;
     decoded_message:string;
+    image_data:string;
 }

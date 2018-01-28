@@ -1,18 +1,21 @@
 
 <ion-header>
   
-    <ion-navbar>
-      <ion-title>Home</ion-title>
-    </ion-navbar>
+    
+
+   
   
   </ion-header>
   
   
-  <ion-content padding style="background-image:url('./assets/imgs/back.png')">
+  <ion-content padding style="background-image:url('./assets/imgs/black.jpg')">
     
     <div style="text-align:center">
-      <button ion-outline-button style="height:50px;width:80%;border-radius:20px;background-color:rgb(36, 197, 14);margin-top:300px;"  (click)="send()"><b>Send  </b> <ion-icon name="md-send"></ion-icon></button><br><br><br>
-      <button ion-outline-button style="height:50px;width:80%;border-radius:20px;background-color:rgb(238, 147, 29)"  (click)="retrieve()"><b>Retrieve  </b><ion-icon name="md-download"></ion-icon></button>		
+      
+     <img  [src]="base64Image" width="80%"  style="background-image:url('./assets/imgs/black.jpg');border-radius: 10px;"/>						
+            
+      <button ion-button round outline color="dark" style="background-image:url('./assets/imgs/button.png');height:50px;width:80%;border-radius:20px;margin-top:30px; color:deepskyblue"  (click)="send()"><b>Send</b> <ion-icon style="padding-left: 10px;" name="md-send"></ion-icon></button><br><br><br>
+      <button ion-button round outline color="dark" style="background-image:url('./assets/imgs/button.png');height:50px;width:80%;border-radius:20px;color:deepskyblue"  (click)="retrieve()"><b>Retrieve</b><ion-icon style="padding-left: 10px;" name="md-download"></ion-icon></button>		
   
     </div>
   </ion-content>

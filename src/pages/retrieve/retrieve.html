@@ -6,31 +6,29 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Retrieve</ion-title>
-  </ion-navbar>
+
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding padding style="background-image:url('./assets/imgs/black.jpg')">
 
 <p style="width:80%;">
-	<button ion-outline-button style="height:40px;width:60%;border-radius:20px;background-color:rgb(94, 255, 0)"  (click)="browseFile(user)"><b>Browse for code file  </b><ion-icon name="md-albums"></ion-icon></button>
+	<button ion-button round outline color="dark" style="background-image:url('./assets/imgs/button.png');height:50px;width:80%;border-radius:10px;color:lawngreen"  (click)="browseFile(user)"><b>Browse for code file  </b><ion-icon style="padding-left: 10px" name="md-albums"></ion-icon></button>
 </p>	
-
 <p style="width:80%;">
-<textarea cols="40" rows="4" [(ngModel)]="user.code"></textarea>
-</p>
-<p style="width:80%;">
-		<button ion-outline-button style="height:40px;width:49%;border-radius:20px;background-color:rgb(255, 102, 0)"  (click)="covert_string_to_image(user)"><b>Process  </b><ion-icon name="md-barcode"></ion-icon></button>
+		<button ion-button round outline color="dark" style="background-image:url('./assets/imgs/button.png');height:50px;width:49%;border-radius:10px;color:darkorange"  (click)="covert_string_to_image(user)"><b>Process  </b><ion-icon style="padding-left: 10px" name="md-barcode"></ion-icon></button>
 </p>		
 <p style="width:80%;">
-		<img [src]="base64Image" width="60%" style="background-color:cornsilk"/>
+		<img [src]="base64Image" width="80%" style="background-color:cornsilk; border-radius: 5px;"/>
 </p>
 
-<p style="width:80%;">
-    <ion-label>Your Decrypted Message</ion-label>
-    <textarea cols="40" rows="6" [(ngModel)]="user.decoded_message"></textarea>
-</p>
+
 </ion-content>
+
+<ion-footer>
+		<p style="color:black;padding-bottom:10px;text-align:center;">
+        <ion-label ><b>Message</b></ion-label>
+        <textarea cols="40" rows="7" style="border-radius: 5px;color:black" [(ngModel)]="user.decoded_message" ></textarea>
+    </p>
+	</ion-footer>

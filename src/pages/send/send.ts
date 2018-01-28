@@ -26,10 +26,12 @@ export class SendPage {
 
   
   constructor(private emailComp:EmailComposer, public navCtrl: NavController,private cam:Camera,private alertCntrl:AlertController,private file:File) {
-this.base64Image='./assets/imgs/blank.jpg';
+this.base64Image='./assets/imgs/i.gif';
   }
 
   capture_image(user:User){
+
+    if(user.message!=null && user.file_name!=null){
     this.base64Image=null;
     this.cam.getPicture({
       quality:20,
@@ -42,7 +44,7 @@ this.base64Image='./assets/imgs/blank.jpg';
       this.imageLen=this.base64Image.length;
       
             if( this.imageLen > 75000){
-              this.base64Image ='./assets/imgs/blank.jpg';
+              this.base64Image ='./assets/imgs/i.gif';
               this.imageLen_string=String(this.imageLen);
               let alert=this.alertCntrl.create({
                 title:"File Size is Too Big ",
@@ -75,10 +77,22 @@ this.base64Image='./assets/imgs/blank.jpg';
     },(err) =>{
       console.log(err);
     });
+
+  }
+  else{
+    let alert=this.alertCntrl.create({
+      title:"Enter details",
+      subTitle:'Enter message and filename',
+     buttons:['Ok']
+    });
+    alert.present();
+
+  }
   }
 
   Open_image_gallery(user:User){
 
+    if(user.message!=null && user.file_name!=null){
     this.cam.getPicture({
       quality:20,
       sourceType:this.cam.PictureSourceType.PHOTOLIBRARY,
@@ -91,7 +105,7 @@ this.base64Image='./assets/imgs/blank.jpg';
       this.imageLen=this.base64Image.length;
 
     if( this.imageLen > 75000){
-        this.base64Image ='./assets/imgs/blank.jpg';
+        this.base64Image ='./assets/imgs/i.gif';
         this.imageLen_string=String(this.imageLen);
         let alert=this.alertCntrl.create({
           title:"File Size is Too Big ",
@@ -127,11 +141,20 @@ this.base64Image='./assets/imgs/blank.jpg';
       console.log(err);
     });
   }
+  else{
+    let alert=this.alertCntrl.create({
+      title:"Enter details",
+      subTitle:'Enter message and filename',
+     buttons:['Ok']
+    });
+    alert.present();
+  }
+  }
 
   sendData(user:User){
     
 
-    if(user.file_name!=null && user.toemail!=null && user.message!=null && this.base64Image!='./assets/imgs/blank.jpg'){
+    if(user.file_name!=null && user.message!=null && this.base64Image!='./assets/imgs/i.gif'){
 
     try{
 
@@ -144,9 +167,8 @@ this.base64Image='./assets/imgs/blank.jpg';
       };
       this.emailComp.open(email);
       user.file_name=null;
-      user.toemail=null;
       user.message=null;
-      this.base64Image='./assets/imgs/blank.jpg'
+      this.base64Image='./assets/imgs/i.gif'
     }catch(e){
       let alert=this.alertCntrl.create({
         title:"Failed",
@@ -174,9 +196,6 @@ if(user.file_name==null)   {
 }
 
 
-if(user.toemail==null){
-  this.onChangeData_toemail(user);
-}
 
   }
 }
@@ -189,8 +208,5 @@ onChangeData_filename(user:User){
 user.file_name=null;
 }
 
-onChangeData_toemail(user:User){
-user.toemail=null;
-}
 
 }

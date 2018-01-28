@@ -1,38 +1,36 @@
-<ion-header>
-	
-	  <ion-navbar>
-		<ion-title>Send</ion-title>
-	  </ion-navbar>
-	
-	</ion-header>
-<ion-content padding>
 
-		<ion-item style="width:80%;">
-			<ion-label floating>Enter your Secret Message here</ion-label>
-			<ion-input  type="text" [(ngModel)]="user.message" (ngModelChnage)="onChangeData_message(user)"></ion-input>
+<ion-content padding style="background-image:url('./assets/imgs/black.jpg')">
+
+		<ion-item style="width:80%;background-color:transparent; color:black" >
+			<ion-label floating style="color:black" >Enter your Secret Message here</ion-label>
+			<ion-input  style="color:black" type="text" [(ngModel)]="user.message" (ngModelChnage)="onChangeData_message(user)"></ion-input>
 		</ion-item>
-		<ion-item style="width:80%;">
-			<ion-label floating>Name the secret File</ion-label>
-			<ion-input  type="text" [(ngModel)]="user.file_name" (ngModelChnage)="onChangeData_filename(user)" ></ion-input>
+		<ion-item style="width:80%;background-color:transparent;">
+			<ion-label floating style="color:black" >Name the secret File</ion-label>
+			<ion-input style="color:black"  type="text" [(ngModel)]="user.file_name" (ngModelChnage)="onChangeData_filename(user)" ></ion-input>
 		</ion-item>
+		<br>
+
+		<ion-grid>
+			
+				<ion-row>
+				<ion-col>
+						<button ion-button round outline color="dark" style="background-image:url('./assets/imgs/button.png');height:40px;width:80%;border-radius:20px;color:lawngreen"  (click)="capture_image(user)"><b>Camera</b><ion-icon style="padding-left: 10px;" name="md-camera"></ion-icon></button>
+				</ion-col>	
+				<ion-col>
+						<button ion-button round outline color="dark" style="background-image:url('./assets/imgs/button.png');height:40px;width:80%;border-radius:20px;color:darkorange"  (click)="Open_image_gallery(user)"><b>Gallery</b><ion-icon style="padding-left: 10px;" name="md-albums"></ion-icon></button>		
+				</ion-col>		
+				</ion-row>
+				<ion-row>
+						<ion-col>
+							<img  [src]="base64Image" width="80%"  style="background-color:cornsilk; border-radius: 10px;"/>						
+						</ion-col>
+						</ion-row>
+		</ion-grid>
 		
-		<p style="width:80%;">
-		<img [src]="base64Image" width="60%"  style="background-color:cornsilk"/>
-		</p>
-		
-		<p style="width:80%;">
-		<button ion-outline-button style="height:40px;width:49%;border-radius:20px;background-color:rgb(255, 102, 0)"  (click)="capture_image(user)"><ion-icon name="md-camera"></ion-icon></button>
-		<button ion-outline-button style="height:40px;width:49%;border-radius:20px;background-color:rgb(71, 219, 219)"  (click)="Open_image_gallery(user)"><ion-icon name="md-albums"></ion-icon></button>		
-		</p>
-	
-	<ion-item style="width:80%;">
-		<ion-label floating>To Email</ion-label>
-		<ion-input  type="text"  [(ngModel)]="user.toemail" (ngModelChnage)="onChangeData_toemail(user)"></ion-input>
-	</ion-item>
-
-	<p style="width:80%">
-		<button ion-outline-button style="height:45px;width:100%;border-radius:20px;background-color:rgb(28, 184, 28)"  (click)="sendData(user)"><ion-icon name="md-mail-open"></ion-icon></button>
-	</p>
-
-
 </ion-content>
+<ion-footer>
+		<p style="width:99%;margin-bottom: 10px;text-align:center;">
+				<button ion-button round outline color="dark" style="background-image:url('./assets/imgs/button.png');height:75px;width:90%;border-radius:20px;color:deepskyblue"  (click)="sendData(user)"><b>Share</b><ion-icon style="padding-left: 10px;" name="md-share"></ion-icon></button>
+			</p>
+	</ion-footer>
